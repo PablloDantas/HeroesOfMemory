@@ -1,0 +1,31 @@
+.botao-1 {
+  background-image: linear-gradient(to right, #0bb070, #00695c);
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra de caixa */
+  color: #e6e6e6; /* Usa a cor de texto do elemento pai */
+  text-transform: uppercase;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none; /* Remove a borda */
+  padding: 10px 20px; /* Remove o padding */
+  border-radius: 10px;
+  margin: 0; /* Remove a margem */
+  cursor: pointer; /* Mantém o cursor como ponteiro para indicar clicabilidade */
+  outline: inherit; /* Usa o contorno (outline) do elemento pai */
+}
+
+.botao-2 {
+  background-image: linear-gradient(to right, #ff073a, #c70039);
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra de caixa */
+  color: #e6e6e6; /* Usa a cor de texto do elemento pai */
+  text-transform: uppercase;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none; /* Remove a borda */
+  padding: 10px 20px; /* Remove o padding */
+  border-radius: 10px;
+  margin: 0; /* Remove a margem */
+  cursor: pointer; /* Mantém o cursor como ponteiro para indicar clicabilidade */
+  outline: inherit; /* Usa o contorno (outline) do elemento pai */
+}

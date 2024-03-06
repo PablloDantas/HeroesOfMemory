@@ -1,0 +1,15 @@
+.jogo {
+  margin-top: 30px;
+  padding: 30px 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  border-radius: 15px;
+  background-image: linear-gradient(180deg, #111727, #020817);
+  box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cartao img {
+  width: 100%;
+  height: auto;
+}

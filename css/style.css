@@ -1,0 +1,10 @@
+/* Utilitários */
+@import "./utilidades/backgrounds.css";
+@import "./utilidades/botoes.css";
+@import "./utilidades/cores.css";
+@import "./utilidades/containers.css";
+
+/* Home */
+@import "./home/home.css";
+@import "./home/controle.css";
+@import "./home/jogo.css";
