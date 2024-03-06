@@ -3,33 +3,36 @@ class JogoDaMemoria {
     this.tela = tela;
     // caminho relativo ao index.html
     this.heroisIniciais = [
-      { img: "./icons/aquaman.png", name: "aquaman" },
-      { img: "./icons/batman.png", name: "batman" },
-      { img: "./icons/captainamerican.png", name: "captainamerican" },
-      { img: "./icons/captainmarvel.png", name: "captainmarvel" },
-      { img: "./icons/deadpool.png", name: "deadpool" },
-      { img: "./icons/fantasticfour.png", name: "fantasticfour" },
-      { img: "./icons/flash.png", name: "flash" },
-      { img: "./icons/greenlantern.png", name: "greenlantern" },
-      { img: "./icons/hankman.png", name: "hankman" },
-      { img: "./icons/ironfirst.png", name: "ironfirst" },
-      { img: "./icons/ironman.png", name: "ironman" },
-      { img: "./icons/loki.png", name: "loki" },
-      { img: "./icons/robin.png", name: "robin" },
-      { img: "./icons/shield.png", name: "shield" },
-      { img: "./icons/spiderman.png", name: "spiderman" },
-      { img: "./icons/superman.png", name: "superman" },
-      { img: "./icons/thepunisher.png", name: "thepunisher" },
-      { img: "./icons/venom.png", name: "venom" },
-      { img: "./icons/wonderwoman.png", name: "wonderwoman" },
-      { img: "./icons/xman.png", name: "xman" },
+      { img: "./icons/aquaman.png", nome: "aquaman" },
+      { img: "./icons/batman.png", nome: "batman" },
+      { img: "./icons/captainamerican.png", nome: "captainamerican" },
+      { img: "./icons/captainmarvel.png", nome: "captainmarvel" },
+      { img: "./icons/deadpool.png", nome: "deadpool" },
+      { img: "./icons/fantasticfour.png", nome: "fantasticfour" },
+      { img: "./icons/flash.png", nome: "flash" },
+      { img: "./icons/greenlantern.png", nome: "greenlantern" },
+      { img: "./icons/hankman.png", nome: "hankman" },
+      { img: "./icons/ironfirst.png", nome: "ironfirst" },
+      { img: "./icons/ironman.png", nome: "ironman" },
+      { img: "./icons/loki.png", nome: "loki" },
+      { img: "./icons/robin.png", nome: "robin" },
+      { img: "./icons/shield.png", nome: "shield" },
+      { img: "./icons/spiderman.png", nome: "spiderman" },
+      { img: "./icons/superman.png", nome: "superman" },
+      { img: "./icons/thepunisher.png", nome: "thepunisher" },
+      { img: "./icons/venom.png", nome: "venom" },
+      { img: "./icons/wonderwoman.png", nome: "wonderwoman" },
+      { img: "./icons/xman.png", nome: "xman" },
     ];
     this.iconePadrao = "./icons/random.png";
     this.heroisEscondidos = [];
+    this.heroisEscondidos = [];
+    this.heroisSelecionados = [];
   }
   inicializar() {
     this.tela.atualizarImagens(this.heroisIniciais);
     this.tela.configurarBotaoJogar(this.jogar.bind(this));
+    this.tela.configurarBotaoVeridicarSelecao(this.verificarSelecao.bind(this));
   }
   embaralhar() {
     const copias = this.heroisIniciais
@@ -45,7 +48,7 @@ class JogoDaMemoria {
     // atraso na atualização de tela
     setTimeout(() => {
       this.esconderHerois(copias);
-    }, 5000);
+    }, 2000);
   }
   esconderHerois(herois) {
     // Troca as imagens dos herois pelo icone random
@@ -56,6 +59,35 @@ class JogoDaMemoria {
     }));
     this.tela.atualizarImagens(heroisOcultos);
     this.heroisOcultos = heroisOcultos;
+  }
+  verificarSelecao(id, nome) {
+    const item = { id, nome };
+    // Veirifica a quantidade de herois selecionados e verifica se deu certo ou errado
+    const heroisSelecionados = this.heroisSelecionados.length;
+    switch (heroisSelecionados) {
+      case 0:
+        // Adiciona a escolha na lista e espera o próximo click
+        this.heroisSelecionados.push(item);
+        break;
+      case 1:
+        // Se a quantidade de itens escolhidos for 1, significa que o usuário só //
+        // podde escolher mais um item.
+        const [opcao1] = this.heroisSelecionados;
+        // zerar a lista de herois selecionados
+        this.heroisSelecionados = [];
+        if (
+          opcao1.nome === item.nome &&
+          // Verifica se os ids são diferentes para o usuário não clicar duas vezes na mesma carta
+          opcao1.id !== item.id
+        ) {
+          alert("combinação correta!" + item.nome);
+          // Para a execução
+          return;
+        }
+        alert("combinação incorreta!");
+        // fim do case!
+        break;
+    }
   }
   jogar() {
     this.embaralhar();
