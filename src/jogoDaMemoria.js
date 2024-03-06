@@ -24,13 +24,12 @@ class JogoDaMemoria {
       { img: "./icons/wonderwoman.png", name: "wonderwoman" },
       { img: "./icons/xman.png", name: "xman" },
     ];
+    this.iconePadrao = "./icons/random.png";
+    this.heroisEscondidos = [];
   }
   inicializar() {
     this.tela.atualizarImagens(this.heroisIniciais);
     this.tela.configurarBotaoJogar(this.jogar.bind(this));
-  }
-  jogar() {
-    this.embaralhar();
   }
   embaralhar() {
     const copias = this.heroisIniciais
@@ -43,5 +42,22 @@ class JogoDaMemoria {
       // Ordena os heróis de forma aleatória
       .sort(() => Math.random() - 0.5);
     this.tela.atualizarImagens(copias);
+    // atraso na atualização de tela
+    setTimeout(() => {
+      this.esconderHerois(copias);
+    }, 5000);
+  }
+  esconderHerois(herois) {
+    // Troca as imagens dos herois pelo icone random
+    const heroisOcultos = herois.map(({ nome, id }) => ({
+      id,
+      nome,
+      img: this.iconePadrao,
+    }));
+    this.tela.atualizarImagens(heroisOcultos);
+    this.heroisOcultos = heroisOcultos;
+  }
+  jogar() {
+    this.embaralhar();
   }
 }
