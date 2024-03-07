@@ -34,6 +34,9 @@ class JogoDaMemoria {
     this.tela.atualizarImagens(this.heroisIniciais);
     this.tela.configurarBotaoJogar(this.jogar.bind(this));
     this.tela.configurarBotaoVeridicarSelecao(this.verificarSelecao.bind(this));
+    this.tela.configurarBotaoMostrarTudo(
+      this.mostrarHeroisEscondidos.bind(this)
+    );
   }
   async embaralhar() {
     const copias = this.heroisIniciais
@@ -61,7 +64,7 @@ class JogoDaMemoria {
       img: this.iconePadrao,
     }));
     this.tela.atualizarImagens(heroisOcultos);
-    this.heroisOcultos = heroisOcultos;
+    this.heroisEscondidos = heroisOcultos;
   }
   exibirHerois(nomeDoHeroi) {
     // Busca nos herois inicias pelo nome para obter a imagem heroi
@@ -99,6 +102,16 @@ class JogoDaMemoria {
         this.tela.exibirMensagem(false); // fim do case!
         break;
     }
+  }
+  mostrarHeroisEscondidos() {
+    const heroisEscondidos = this.heroisEscondidos;
+    for (const heroi of heroisEscondidos) {
+      const { img } = this.heroisIniciais.find(
+        (item) => item.nome === heroi.nome
+      );
+      heroi.img = img;
+    }
+    this.tela.atualizarImagens(heroisEscondidos);
   }
   jogar() {
     this.embaralhar();

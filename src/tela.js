@@ -2,6 +2,7 @@ const util = Util;
 const ID_CONTADOR = "contador";
 const ID_CONTEUDO = "jogo-conteudo";
 const ID_BTN_JOGAR = "jogar";
+const ID_BTN_MOSTRAR = "mostrar";
 const ID_RESULTADO = "resultado";
 const MENSAGENS = {
   inicio: {
@@ -89,5 +90,9 @@ class Tela {
     clearInterval(idDoIntervalo);
     const elemento = document.getElementById(ID_RESULTADO);
     elemento.innerText = MENSAGENS.inicio.texto;
+  }
+  static configurarBotaoMostrarTudo(funcaoOnClick) {
+    const btnMostarTudo = document.getElementById(ID_BTN_MOSTRAR);
+    btnMostarTudo.onclick = funcaoOnClick;
   }
 }
