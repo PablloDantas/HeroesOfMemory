@@ -1,0 +1,28 @@
+#resultado {
+  margin-top: 30px;
+  padding: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Poppins";
+  font-weight: 700;
+  color: #e6e6e6; /* Usa a cor de texto do elemento pai */
+  box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+}
+
+.invisivel {
+  display: none;
+}
+
+.inicio {
+  background: linear-gradient(180deg, #111727, #020817);
+}
+
+.acertou {
+  background: linear-gradient(to right, #0bb070, #00695c);
+}
+
+.errou {
+  background: linear-gradient(to right, #ff073a, #c70039);
+}

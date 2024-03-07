@@ -60,6 +60,14 @@ class JogoDaMemoria {
     this.tela.atualizarImagens(heroisOcultos);
     this.heroisOcultos = heroisOcultos;
   }
+  exibirHerois(nomeDoHeroi) {
+    // Busca nos herois inicias pelo nome para obter a imagem heroi
+    const imgHeroi = this.heroisIniciais.find(
+      ({ nome }) => nomeDoHeroi === nome
+    );
+    // Exibir os herois selecionados
+    this.tela.exibirHerois(nomeDoHeroi, imgHeroi.img);
+  }
   verificarSelecao(id, nome) {
     const item = { id, nome };
     // Veirifica a quantidade de herois selecionados e verifica se deu certo ou errado
@@ -80,12 +88,12 @@ class JogoDaMemoria {
           // Verifica se os ids são diferentes para o usuário não clicar duas vezes na mesma carta
           opcao1.id !== item.id
         ) {
-          alert("combinação correta!" + item.nome);
+          this.exibirHerois(item.nome);
+          this.tela.exibirMensagem();
           // Para a execução
           return;
         }
-        alert("combinação incorreta!");
-        // fim do case!
+        this.tela.exibirMensagem(false); // fim do case!
         break;
     }
   }
