@@ -1,6 +1,7 @@
 class JogoDaMemoria {
-  constructor({ tela }) {
+  constructor({ tela, util }) {
     this.tela = tela;
+    this.util = util;
     // caminho relativo ao index.html
     this.heroisIniciais = [
       { img: "./icons/aquaman.png", nome: "aquaman" },
@@ -34,7 +35,7 @@ class JogoDaMemoria {
     this.tela.configurarBotaoJogar(this.jogar.bind(this));
     this.tela.configurarBotaoVeridicarSelecao(this.verificarSelecao.bind(this));
   }
-  embaralhar() {
+  async embaralhar() {
     const copias = this.heroisIniciais
       // Cria uma cópia para cada Heroi
       .concat(this.heroisIniciais)
@@ -45,10 +46,12 @@ class JogoDaMemoria {
       // Ordena os heróis de forma aleatória
       .sort(() => Math.random() - 0.5);
     this.tela.atualizarImagens(copias);
+    const idDoIntervalo = this.tela.iniciarContador();
+
     // atraso na atualização de tela
-    setTimeout(() => {
-      this.esconderHerois(copias);
-    }, 2000);
+    await this.util.timeout(5000);
+    this.tela.limparContador(idDoIntervalo);
+    this.esconderHerois(copias);
   }
   esconderHerois(herois) {
     // Troca as imagens dos herois pelo icone random
