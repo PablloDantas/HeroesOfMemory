@@ -52,7 +52,7 @@ class JogoDaMemoria {
     const idDoIntervalo = this.tela.iniciarContador();
 
     // atraso na atualização de tela
-    await this.util.timeout(5000);
+    await this.util.timeout(10000);
     this.tela.limparContador(idDoIntervalo);
     this.esconderHerois(copias);
   }

@@ -73,7 +73,7 @@ class Tela {
     elemento.innerText = MENSAGENS.inicio.texto;
   }
   static iniciarContador() {
-    let contarAte = 5;
+    let contarAte = 10;
     const elementoContador = document.getElementById(ID_RESULTADO);
     const identificadorNoTexto = "$$contador";
     const textoPadrao = `Començando em ${identificadorNoTexto} segundos...`;
